@@ -1,0 +1,66 @@
+@orange: #F7B54A;
+@grey: #DFDFDF;
+@orangeLight: #FFECCF;
+@redDark: #AF0000;
+
+@import "_basic";
+ 
+div#head {
+  .contentContainer;
+  .rounded;
+  border: 1px solid black;
+  margin-bottom: 20px;
+}
+
+div#content {
+  .contentContainer;
+  .rounded;
+	border: 1px solid black;
+  padding-top: 20px;
+  padding-bottom: 20px;
+  
+  div#colLeft {
+    .grid(58, 2, 2, 4, 4);
+		.rounded;
+		dl dt {	
+			.grid(25);
+			clear: both;
+		}
+		dl dd { .grid(8); }
+  }
+  div#colRight {
+    .grid(20, 0, 2, 2 ,2);
+    .rounded;
+  }
+}
+
+
+div#cheatsheet {
+  margin-top: 40px;
+  .cheatsheetContainer;
+  div#cheatsheetTabs {
+    .grid(56,32,23);
+    ul {
+			.rounded;
+			border: 1px solid black;
+			height: 16px;
+			li {
+      float: left;
+      list-style-type: none;
+      margin-left: 20px;
+    	}
+		}
+  }
+  div.column {
+    .grid(28);
+  }
+  div#content {
+    .grid(60, 2, 2);
+		border: none;
+  }
+}
+div.block {
+  .rounded;
+  border: 1px solid black;
+	margin-bottom: 20px;
+}

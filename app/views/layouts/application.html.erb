@@ -2,13 +2,40 @@
 <html>
 <head>
   <title>CheatsheetCmsRails</title>
+  <link rel="stylesheet/less" href="/stylesheets/cheatsheet.less" type="text/css">
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
   <%= csrf_meta_tag %>
 </head>
 <body>
-
-<%= yield %>
-
+  <div id="head">
+    <h1>Welcome to Cheatsheet-CMS-Rails</h1>
+    <h2>Developers place for for creating and sharing Cheatsheets</h2>
+  </div>
+  <div id="content">
+    <div id="colLeft">
+      <% flash.each do |key, value| %><div class="flash <%= key %>"><%= key %>: <%= value %></div><% end %> 
+     <%= yield %>
+   </div>
+    <div id="colRight">
+      <% if user_signed_in? %>
+        <p>Welcome <span><%= current_user.email %></span></p>
+        <%= link_to "Log out", destroy_user_session_path %>
+      <% else %>
+        <%= form_tag(new_user_session_path) %>
+        <h3>Login</h3>
+        <dl>
+          <dt><%= label_tag 'user[email]', 'User' %></dt>
+          <dd><%= text_field_tag 'user[email]' %></dd>
+          <dt><%= label_tag 'user[password]', 'Password' %></dt>
+          <dd><%= text_field_tag 'user[password]' %></dd>
+          <dd><%= submit_tag "Sign in" %></dd>
+          <dt><%= link_to "Password forgotten? (WIP!)", new_user_password_path %></dt>
+          <dt><%= link_to "Join us", new_user_registration_path %></dt>
+        </dl>
+      <% end %> 
+    </div>
+    <div class="clear">&nbsp;</div>
+  </div>
 </body>
 </html>
