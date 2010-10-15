@@ -1,0 +1,27 @@
+<h1>Listing sheets</h1>
+
+<table>
+  <tr>
+    <th>Name</th>
+    <th>Description</th>
+    <th>User</th>
+    <th></th>
+    <th></th>
+    <th></th>
+  </tr>
+
+<% @sheets.each do |sheet| %>
+  <tr>
+    <td><%= sheet.name %></td>
+    <td><%= sheet.description %></td>
+    <td><%= sheet.user %></td>
+    <td><%= link_to 'Show', sheet %></td>
+    <td><%= link_to 'Edit', edit_sheet_path(sheet) %></td>
+    <td><%= link_to 'Destroy', sheet, :confirm => 'Are you sure?', :method => :delete %></td>
+  </tr>
+<% end %>
+</table>
+
+<br />
+
+<%= link_to 'New Sheet', new_sheet_path %>

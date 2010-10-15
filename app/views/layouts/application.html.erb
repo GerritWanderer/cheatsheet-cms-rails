@@ -20,7 +20,10 @@
     <div id="colRight">
       <% if user_signed_in? %>
         <p>Welcome <span><%= current_user.email %></span></p>
-        <%= link_to "Log out", destroy_user_session_path %>
+        <ul>
+        <li><%= link_to "Log out", destroy_user_session_path %></li>
+        <li><%= link_to "Manage Cheatsheets", sheets_path %></li>
+        </ul>
       <% else %>
         <%= form_tag(new_user_session_path) %>
         <h3>Login</h3>

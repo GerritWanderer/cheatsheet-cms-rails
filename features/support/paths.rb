@@ -14,12 +14,14 @@ module NavigationHelpers
       new_user_registration_path
     when /the redisplayed new account page/
       user_registration_path
-
-    # Add more mappings here.
-    # Here is an example that pulls values out of the Regexp:
-    #
-    #   when /^(.*)'s profile page$/i
-    #     user_profile_path(User.find_by_login($1))
+    when /the create cheatsheet page/
+      new_sheet_path
+    when /the edit cheatsheet page/
+      edit_sheet_path
+    when /the cheatsheets page/
+      sheets_path
+    when /the cheatsheet page/
+      sheet_path
 
     else
       begin
