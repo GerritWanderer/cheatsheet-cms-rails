@@ -22,6 +22,14 @@ module NavigationHelpers
       sheets_path
     when /the cheatsheet page/
       sheet_path
+    when /the create sheetblock page/
+      new_sheet_block_path
+    when /the edit sheetblock page/
+      edit_sheet_block_path
+    when /the sheetblocks page/
+      sheet_blocks_path
+    when /the sheetblock page/
+      sheet_block_path
 
     else
       begin

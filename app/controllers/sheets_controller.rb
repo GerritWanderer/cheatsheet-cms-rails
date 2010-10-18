@@ -46,8 +46,7 @@ class SheetsController < ApplicationController
 
   def destroy
     @sheet = Sheet.find(params[:id])
-    @sheet.destroy
-    flash[:notice] = "Sheet was successfully deleted"#
+    @sheet.destroy ? flash[:notice] = "Sheet was successfully deleted" : flash[:warning] = "Sheet was NOT deleted"
     redirect_to sheets_path
   end
 end

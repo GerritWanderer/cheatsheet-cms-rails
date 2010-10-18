@@ -17,18 +17,18 @@
           <li><%= link_to sheet.name, sheet_path(sheet) %></li>
         <% end %>
         <li><%= link_to 'Back', sheets_path %></li>
-        <li>...</li>
+        <li><%= link_to 'New Block', new_sheet_block_path(@sheet) %></li>
         <li>...</li>
       </ul>
     </div>
-    <div class="column left">
-      ...
+    <div id="columnLeft">
+      <%= render :partial => "sheets/block", :object => @sheet, :as => :sheet, :locals => { :column => "left" } %>
     </div>
     <div id="content">
       <%= yield %>
     </div>
-    <div class="column right">
-      ...
+    <div id="columnRight">
+      <%= render :partial => "sheets/block", :object => @sheet, :as => :sheet, :locals => { :column => "right" } %> 
     </div>
     <div class="clear">&nbsp;</div>
   </div>

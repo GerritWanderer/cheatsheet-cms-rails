@@ -1,0 +1,12 @@
+<% sheet.blocks.find_all{|item| item.column == column}.each do |block| %>
+  <div class="block">
+    <dl>
+      <dt>
+        <%= block.name %>
+        - <%= link_to "Edit", edit_sheet_block_path(sheet, block) %>
+        - <%= link_to 'Destroy', sheet_block_path(sheet, block), :confirm => 'Sicher?', :method => :delete %>
+      </dt>
+      ...
+    </dl>
+  </div>
+<% end %>

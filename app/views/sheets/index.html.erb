@@ -12,10 +12,9 @@
 
 <% @sheets.each do |sheet| %>
   <tr>
-    <td><%= sheet.name %></td>
+    <td><%= link_to sheet.name, sheet %></td>
     <td><%= sheet.description %></td>
-    <td><%= sheet.user %></td>
-    <td><%= link_to 'Show', sheet %></td>
+    <td><%= sheet.user.email %></td>
     <td><%= link_to 'Edit', edit_sheet_path(sheet) %></td>
     <td><%= link_to 'Destroy', sheet, :confirm => 'Are you sure?', :method => :delete %></td>
   </tr>
