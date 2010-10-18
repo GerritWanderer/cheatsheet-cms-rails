@@ -41,6 +41,15 @@ Feature: Manage my Cheatsheets
     And I press "Update Sheet"
     Then I should see "Cheatsheet Edit-Sample"
     And I am on the cheatsheets page
+    
+  Scenario: Edit Sheet unsuccessful
+    Given I am an authenticated user
+    And I created a Sheet with name "Cheatsheet Sample"
+    And I am on the cheatsheets page
+    When I follow "Edit"
+    And I fill in "sheet_name" with "SS"
+    And I press "Update Sheet"
+    Then I should see "Sheet was NOT updated"
   
   Scenario: Destroy Sheet successfully
     Given I am an authenticated user

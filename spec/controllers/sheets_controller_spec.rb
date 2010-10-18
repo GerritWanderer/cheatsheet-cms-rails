@@ -14,17 +14,18 @@ describe SheetsController do
   
   describe "GET index" do
     it "assigns all sheets as @sheets" do
-      Sheet.stub(:all) { [mock_sheet] }
+      Sheet.stub(:find_all_by_user_id) { [mock_sheet] }
       get :index
       assigns(:sheets).should eq([mock_sheet])
     end
   end
-
   describe "GET show" do
     it "assigns the requested sheet as @sheet" do
       Sheet.stub(:find).with("37") { mock_sheet }
+      Sheet.stub(:find_all_by_user_id) { [mock_sheet] }
       get :show, :id => "37"
       assigns(:sheet).should be(mock_sheet)
+      assigns(:sheets).should eq([mock_sheet])
     end
   end
 
@@ -35,7 +36,6 @@ describe SheetsController do
       assigns(:sheet).should be(mock_sheet)
     end
   end
-
   describe "GET edit" do
     it "assigns the requested sheet as @sheet" do
       Sheet.stub(:find).with("37") { mock_sheet }
@@ -45,7 +45,6 @@ describe SheetsController do
   end
 
   describe "POST create" do
-
     describe "with valid params" do
       it "assigns a newly created sheet as @sheet" do
         Sheet.stub(:new).with({'name' => 'Sample Sheet', 'user_id' => 1}) { mock_sheet(:save => true) }
@@ -73,11 +72,9 @@ describe SheetsController do
         response.should render_template("new")
       end
     end
-
   end
 
   describe "PUT update" do
-
     describe "with valid params" do
       it "updates the requested sheet" do
         Sheet.should_receive(:find).with("37") { mock_sheet }
@@ -111,7 +108,6 @@ describe SheetsController do
         response.should render_template("edit")
       end
     end
-
   end
 
   describe "DELETE destroy" do

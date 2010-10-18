@@ -3,14 +3,12 @@ class SheetsController < ApplicationController
   
   def index
     @sheets = Sheet.find_all_by_user_id(current_user.id)
-    @sheets = Sheet.all
     respond_with @sheets
   end
 
   def show
     @sheet = Sheet.find(params[:id])
     @sheets = Sheet.find_all_by_user_id(current_user.id)
-    @sheets = Sheet.all
     respond_with(@sheet) do |format|
       format.html { render :layout => "cheatsheet" }
     end
@@ -33,7 +31,7 @@ class SheetsController < ApplicationController
       flash[:notice] = "Sheet was successfully created"
       respond_with @sheet
     else
-      flash[:notice] = "Sheet was NOT created"
+      flash[:warning] = "Sheet was NOT created"
       respond_with(@sheet) do |format|
         format.html { render :action => "new" }
       end
@@ -42,9 +40,7 @@ class SheetsController < ApplicationController
 
   def update
     @sheet = Sheet.find(params[:id])
-    if @sheet.update_attributes(params[:sheet])
-      flash[:notice] = "Sheet was successfully updated"  
-    end  
+    @sheet.update_attributes(params[:sheet]) ? flash[:notice] = "Sheet was successfully updated" : flash[:warning] = "Sheet was NOT updated"
     respond_with @sheet
   end
 
