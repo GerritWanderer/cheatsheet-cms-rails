@@ -14,6 +14,16 @@ Feature: Manage my Cheatsheets
     Then I am on the cheatsheets page
     And I should see "Cheatsheet Sample"
 
+  Scenario: Create Sheet unsuccessful
+    Given I am an authenticated user
+    And I am on the home page
+    When I follow "Manage Cheatsheets"
+    And I follow "New Sheet"
+    And I fill in "sheet_name" with "xy"
+    And I press "Create Sheet"
+    Then I am on the create cheatsheet page
+    And I should see "Sheet was NOT created"
+      
   Scenario: list all Cheatsheets
     Given I am an authenticated user
     And I created a Sheet with name "Cheatsheet Sample"

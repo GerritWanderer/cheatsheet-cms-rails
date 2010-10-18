@@ -2,6 +2,11 @@ require 'spec_helper'
 
 describe SheetsController do
   include Devise::TestHelpers
+  before(:each) do
+    user = double('user')
+    controller.stub(:current_user) { user }
+    user.stub(:id) { 1 }
+  end
   
   def mock_sheet(stubs={})
     @mock_sheet ||= mock_model(Sheet, stubs).as_null_object
@@ -43,8 +48,8 @@ describe SheetsController do
 
     describe "with valid params" do
       it "assigns a newly created sheet as @sheet" do
-        Sheet.stub(:new).with({'these' => 'params'}) { mock_sheet(:save => true) }
-        post :create, :sheet => {'these' => 'params'}
+        Sheet.stub(:new).with({'name' => 'Sample Sheet', 'user_id' => 1}) { mock_sheet(:save => true) }
+        post :create, :sheet => {'name' => 'Sample Sheet'}
         assigns(:sheet).should be(mock_sheet)
       end
 
@@ -57,8 +62,8 @@ describe SheetsController do
 
     describe "with invalid params" do
       it "assigns a newly created but unsaved sheet as @sheet" do
-        Sheet.stub(:new).with({'these' => 'params'}) { mock_sheet(:save => false) }
-        post :create, :sheet => {'these' => 'params'}
+        Sheet.stub(:new).with({'name' => 'SS', 'user_id' => 1}) { mock_sheet(:save => false) }
+        post :create, :sheet => {'name' => 'SS'}
         assigns(:sheet).should be(mock_sheet)
       end
 

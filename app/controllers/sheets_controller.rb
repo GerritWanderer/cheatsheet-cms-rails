@@ -2,14 +2,14 @@ class SheetsController < ApplicationController
   respond_to :html
   
   def index
-    #@sheets = Sheet.find_all_by_user_id(current_user.id)
+    @sheets = Sheet.find_all_by_user_id(current_user.id)
     @sheets = Sheet.all
     respond_with @sheets
   end
 
   def show
     @sheet = Sheet.find(params[:id])
-    #@sheets = Sheet.find_all_by_user_id(current_user.id)
+    @sheets = Sheet.find_all_by_user_id(current_user.id)
     @sheets = Sheet.all
     respond_with(@sheet) do |format|
       format.html { render :layout => "cheatsheet" }
@@ -27,7 +27,7 @@ class SheetsController < ApplicationController
   end
 
   def create
-    #params[:sheet][:user_id] = current_user.id
+    params[:sheet][:user_id] = current_user.id
     @sheet = Sheet.new(params[:sheet])
     if @sheet.save
       flash[:notice] = "Sheet was successfully created"
