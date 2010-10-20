@@ -2,13 +2,7 @@ require 'spec_helper'
 
 describe "blocks/new.html.erb" do
   before(:each) do
-    assign(:block, stub_model(Block,
-      :new_record? => true,
-      :name => "Test Cheatsheet",
-      :column => "left",
-      :position => 1,
-      :sheet => nil
-    ))
+    @block = Block.make
   end
 
   it "renders new block form" do
