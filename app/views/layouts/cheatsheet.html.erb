@@ -12,13 +12,15 @@
     <% flash.each do |key, value| %><div class="flash <%= key %>"><%= key %>: <%= value %></div><% end %>
     <div id="cheatsheetTabs">
       <ul>
-        <li>...</li>
         <% @sheets.each do |sheet| %>
           <li><%= link_to sheet.name, sheet_path(sheet) %></li>
         <% end %>
-        <li><%= link_to 'Back', sheets_path %></li>
+      </ul>
+      <ul>
+        <li><%= link_to 'Edit Sheet', edit_sheet_path(@sheet) %></li>
+        <li><%= link_to 'Delete Sheet', sheet_path(@sheet), :method => 'delete' %></li>
         <li><%= link_to 'New Block', new_sheet_block_path(@sheet) %></li>
-        <li>...</li>
+        <li>New Cheat</li>
       </ul>
     </div>
     <div id="columnLeft">
