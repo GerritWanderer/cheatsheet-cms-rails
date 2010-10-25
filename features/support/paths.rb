@@ -12,6 +12,8 @@ module NavigationHelpers
       '/'
     when /the new account page/
       new_user_registration_path
+    when /the logout page/
+      destroy_user_session_path
     when /the redisplayed new account page/
       user_registration_path
     when /the create cheatsheet page/

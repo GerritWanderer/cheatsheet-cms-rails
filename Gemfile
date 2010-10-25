@@ -10,3 +10,4 @@ gem 'cucumber'
 gem 'capybara'
 gem "autotest"
 gem 'machinist', '>= 2.0.0.beta1'
+gem 'email_spec'

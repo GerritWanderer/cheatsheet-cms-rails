@@ -9,7 +9,7 @@ Given /^I signed up as "([^\"]*)" with password "([^\"]*)"$/ do |email, password
 end
 
 Given /^I am an authenticated user$/ do
-  email = 'testing@example.com'
+  email = 'admin@wildner-designer.de'
   password = 'secretpass'
 
   Given %{I signed up as "#{email}" with password "#{password}"}
@@ -17,4 +17,6 @@ Given /^I am an authenticated user$/ do
   And %{I fill in "user_email" with "#{email}"}
   And %{I fill in "user_password" with "#{password}"}
   And %{I press "Sign in"}
+  And %{I open the email}
+  And %{they click the first link in the email}
 end
