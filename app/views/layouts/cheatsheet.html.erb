@@ -20,7 +20,7 @@
         <li><%= link_to 'Edit Sheet', edit_sheet_path(@sheet) %></li>
         <li><%= link_to 'Delete Sheet', sheet_path(@sheet), :method => 'delete' %></li>
         <li><%= link_to 'New Block', new_sheet_block_path(@sheet) %></li>
-        <li>New Cheat</li>
+        <li><%= link_to 'New Cheat', new_sheet_cheat_path(@sheet) %></li>
       </ul>
     </div>
     <div id="columnLeft">

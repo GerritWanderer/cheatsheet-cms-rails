@@ -1,0 +1,25 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <b>Name:</b>
+  <%= @cheat.name %>
+</p>
+
+<p>
+  <b>Preview:</b>
+  <%= @cheat.preview %>
+</p>
+
+<p>
+  <b>Position:</b>
+  <%= @cheat.position %>
+</p>
+
+<p>
+  <b>Block:</b>
+  <%= @cheat.block %>
+</p>
+
+
+<%= link_to 'Edit', edit_cheat_path(@cheat) %> |
+<%= link_to 'Back', cheats_path %>

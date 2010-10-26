@@ -7,7 +7,6 @@ describe "blocks/edit.html.erb" do
 
   it "renders the edit block form" do
     render
-
     assert_select "form", :action => block_path(@block), :method => "post" do
       assert_select "input#block_name[value='Sample Block']", :name => "block[name]"
       assert_select "option[selected='selected'][value='left']"

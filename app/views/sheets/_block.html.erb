@@ -4,9 +4,15 @@
       <dt>
         <%= block.name %>
         [<%= link_to "Edit", edit_sheet_block_path(sheet, block) %> /
-        <%= link_to 'Destroy', sheet_block_path(sheet, block), :confirm => 'Sicher?', :method => :delete %>]
+        <%= link_to 'Destroy', sheet_block_path(sheet, block), :confirm => 'Sure?', :method => :delete %>]
       </dt>
-      ...
+      <% block.cheats.each do |cheat| %>
+        <dd>
+          <%= link_to cheat.name, sheet_cheat_path(sheet, cheat) %>
+          [<%= link_to "Edit", edit_sheet_cheat_path(sheet, cheat) %> /
+          <%= link_to 'Destroy', sheet_cheat_path(sheet, cheat), :confirm => 'Sure?', :method => :delete %>]
+        </dd>
+      <% end %>
     </dl>
   </div>
 <% end %>

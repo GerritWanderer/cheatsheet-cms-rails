@@ -1,0 +1,33 @@
+<%= form_for([@sheet, @cheat]) do |f| %>
+  <% if @cheat.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@cheat.errors.count, "error") %> prohibited this cheat from being saved:</h2>
+
+      <ul>
+      <% @cheat.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= f.label :name %><br />
+    <%= f.text_field :name %>
+  </div>
+  <div class="field">
+    <%= f.label :preview %><br />
+    <%= f.text_field :preview %>
+  </div>
+  <div class="field">
+    <%= f.label :position %><br />
+    <%= f.text_field :position %>
+  </div>
+  <div class="field">
+    <%= f.label :block_id %><br />
+    <%= select("cheat", "block_id", @blocks.collect {|p| [ p.name, p.id ] }) %>
+  </div>
+  <div class="actions">
+    <%= f.submit %>
+  </div>
+<% end %>

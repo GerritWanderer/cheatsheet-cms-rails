@@ -21,3 +21,11 @@ Block.blueprint do
   column { "left" }
   position { "1" }
 end
+
+Cheat.blueprint do
+  block
+  id { "#{sn}" }
+  name { "Sample Cheat" }
+  preview { "Lorem ipsum..." }
+  position { "1" }
+end
