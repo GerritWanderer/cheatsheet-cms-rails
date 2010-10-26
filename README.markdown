@@ -12,11 +12,17 @@ _Overall goals:_
 _Whatch out:_
 For the following config settings i selected Env-Variables. Be sure to set the env-variables or use the direct input.
 
-SMTP-Settings... (./config/initializers/setup_mail.rb)
-ENV['SMTP_SERVER'] = 'mail.example.org'
-ENV['SMTP_DOMAIN'] = 'example.org'
-ENV['SMTP_USER'] = 'exampleuser'
-ENV['SMTP_PASSWORD'] = 'examplepassword'
+  SMTP-Settings... (./config/initializers/setup_mail.rb)
+  
+  ENV['SMTP_SERVER'] = 'mail.example.org'
+  
+  ENV['SMTP_DOMAIN'] = 'example.org'
+  
+  ENV['SMTP_USER'] = 'exampleuser'
+  
+  ENV['SMTP_PASSWORD'] = 'examplepassword'
+
 
 Mailer default URL...  (./config/application.rb)
-ENV['DEFAULT_URL_OPTIONS'] = 'localhost:3000'
+
+  ENV['DEFAULT_URL_OPTIONS'] = 'localhost:3000'
