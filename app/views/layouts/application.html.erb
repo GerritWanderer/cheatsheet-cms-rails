@@ -9,36 +9,45 @@
 </head>
 <body>
   <div id="head">
-    <h1>Welcome to Cheatsheet-CMS-Rails</h1>
-    <h2>Developers place for for creating and sharing Cheatsheets</h2>
+    <div id="title">
+      <div class="inside">
+        <h1>Welcome to Cheatsheet-CMS-Rails</h1>
+        <h2>Developers place for for creating and sharing Cheatsheets</h2>
+      </div>
+    </div>
   </div>
   <div id="content">
-    <div id="colLeft">
-      <% flash.each do |key, value| %><div class="flash <%= key %>"><%= key %>: <%= value %></div><% end %> 
-     <%= yield %>
-   </div>
-    <div id="colRight">
-      <% if user_signed_in? %>
-        <p>Welcome <span><%= current_user.email %></span></p>
-        <ul>
-        <li><%= link_to "Log out", destroy_user_session_path %></li>
-        <li><%= link_to "Manage Cheatsheets", sheets_path %></li>
-        </ul>
-      <% else %>
-        <%= form_tag(new_user_session_path) %>
-        <h3>Login</h3>
-        <dl>
-          <dt><%= label_tag 'user[email]', 'User' %></dt>
-          <dd><%= text_field_tag 'user[email]' %></dd>
-          <dt><%= label_tag 'user[password]', 'Password' %></dt>
-          <dd><%= text_field_tag 'user[password]' %></dd>
-          <dd><%= submit_tag "Sign in" %></dd>
-          <dt><%= link_to "Password forgotten? (WIP!)", new_user_password_path %></dt>
-          <dt><%= link_to "Join us", new_user_registration_path %></dt>
-        </dl>
-      <% end %> 
+    <div class="border">
+      <div id="colLeft">
+        <% flash.each do |key, value| %><div class="flash <%= key %>"><%= key %>: <%= value %></div><% end %> 
+        <%= yield %>
+      </div>
+      <div id="colRight">
+        <% if user_signed_in? %>
+          <p>Welcome <span><%= current_user.email %></span></p>
+          <ul>
+            <li><%= link_to "Log out", destroy_user_session_path %></li>
+            <li><%= link_to "Manage Cheatsheets", sheets_path %></li>
+          </ul>
+          <% else %>
+          <%= form_tag(new_user_session_path) %>
+          <dl>
+            <dt><%= label_tag 'user[email]', 'E-Mail' %></dt>
+            <dd><%= text_field_tag 'user[email]' %></dd>
+            <dt><%= label_tag 'user[password]', 'Password' %></dt>
+            <dd><%= text_field_tag 'user[password]' %></dd>
+            <dd><%= check_box_tag 'user[remember_me]', 1, false, :class => 'check' %><label for="user_remember_me">Remember me</label>
+				<%= submit_tag "Login »", :class => 'submit' %>
+			</dd>
+          </dl>
+          <% end %>
+		  <ul>
+          <li><%= link_to "Create Account", new_user_registration_path %></li>
+		  <li><%= link_to "Password forgotten?", new_user_password_path %></li>
+		</ul>
+        </div>
+        <div class="clear">&nbsp;</div>
     </div>
-    <div class="clear">&nbsp;</div>
   </div>
 </body>
 </html>

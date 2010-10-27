@@ -5,7 +5,7 @@ Feature: Use devise functionality
   
   Scenario: Sign up successfully
     Given I am on the home page
-    And I follow "Join us"
+    And I follow "Create Account"
     When I fill in "user_email" with "admin@wildner-designer.de"
     And I fill in "user_password" with "secretpass"
     And I fill in "user_password_confirmation" with "secretpass"
@@ -15,7 +15,7 @@ Feature: Use devise functionality
 
   Scenario: Confirm successfully
     Given I am on the home page
-    And I follow "Join us"
+    And I follow "Create Account"
     When I fill in "user_email" with "admin@wildner-designer.de"
     And I fill in "user_password" with "secretpass"
     And I fill in "user_password_confirmation" with "secretpass"
@@ -29,7 +29,7 @@ Feature: Use devise functionality
   
   Scenario: Sign up unsuccessful
     Given I am on the home page
-    And I follow "Join us"
+    And I follow "Create Account"
     Then I fill in "user_email" with "notvalid"
     And I fill in "user_password" with "secretpass"
     And I fill in "user_password_confirmation" with "secretpass"
@@ -41,5 +41,5 @@ Feature: Use devise functionality
     And I go to the logout page
     When I fill in "user_email" with "admin@wildner-designer.de"
     And I fill in "user_password" with "secretpass"
-    And I press "Sign in"
+    And I press "Login"
     Then I should see "admin@wildner-designer.de" within "div#colRight"

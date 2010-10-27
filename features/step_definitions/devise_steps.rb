@@ -16,7 +16,7 @@ Given /^I am an authenticated user$/ do
   And %{I go to the the home page}
   And %{I fill in "user_email" with "#{email}"}
   And %{I fill in "user_password" with "#{password}"}
-  And %{I press "Sign in"}
+  And %{I press "Login"}
   And %{I open the email}
   And %{they click the first link in the email}
 end

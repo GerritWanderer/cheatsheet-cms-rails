@@ -95,3 +95,28 @@ ul { list-style-type: none; }
   border-top-right-radius: @radius;
   behavior: url(/stylesheets/PIE.htc);
 }
+.roundedBottom (@radius: 10px) {
+  -moz-border-radius-bottomleft: @radius;
+  -moz-border-radius-bottomright: @radius;
+  -webkit-border-bottom-left-radius: @radius;
+  -webkit-border-bottom-right-radius: @radius;
+  border-bottom-left-radius: @radius;
+  border-bottom-right-radius: @radius;
+  behavior: url(/stylesheets/PIE.htc);
+}
+.button {
+background: #222 url(http://www.zurb.com/images/alert-overlay.png) repeat-x;
+display: inline-block;
+padding: 6px;
+color: #fff;
+text-decoration: none;
+line-height: 1;
+-moz-border-radius: 5px;
+-webkit-border-radius: 5px;
+-moz-box-shadow: 0 1px 3px #999;
+-webkit-box-shadow: 0 1px 3px #999;
+text-shadow: 0 -1px 1px #222;
+border-bottom: 1px solid #222;
+position: relative;
+cursor: pointer;
+}
