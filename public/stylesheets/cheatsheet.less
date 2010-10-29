@@ -4,12 +4,10 @@
 @greyLight: #EFEFEF;
 
 @import "_basic";
-
-p { margin-bottom: 20px;}
 body {
 	background-color: @greyDark;
 	font-family: 'Cuprum', verdana, arial;
-	letter-spacing: 1px;
+	letter-spacing: 0.8px;
 }
 div#head {
 	background-color: @redDark;
@@ -38,13 +36,14 @@ div#content {
   padding: 20px 0px;
   background-color: @greyLight;
   div#colLeft {
+		.grid(66,2,2);
+		p { margin-bottom: 20px;}
 		h2 {
 	  	color: @redDark;
 	  	font-weight: bold;
 	  	font-size: 18px;
 	  	margin-bottom: 15px;
 		}
-  	.grid(66,2,2);
 		dl dt {	
 			.grid(16);
 			font-weight: bold;
@@ -55,6 +54,19 @@ div#content {
 		dl dd {
 			.grid(8);
 			height: 35px;
+		}
+		
+		div.sheetIndex {
+			.rounded;
+			padding: 5px;
+			margin-bottom: 20px;
+			background-color: @redDark;
+			h3 { .grid(15) }
+			p { .grid(39); margin-bottom: 0px; color: white; }
+			ul { .grid(10) }
+			li { float: left; margin-left: 10px; }
+			li:first-child { margin-left: 0px; }
+			a { color: white; }
 		}
   }
   div#colRight {
@@ -67,9 +79,7 @@ div#content {
 		}
 		dl {
 			.rounded(20px);
-		  background:  -moz-linear-gradient(19% 75% 90deg,@redDark, @redLight);
-		  background:-webkit-gradient(linear, 0% 0%, 0% 100%, from(@redLight), to(@redDark));
-
+			.gradient(@redLight, @redDark);
 			border: 2px solid #6A1503;
 			padding: 10px;
 			margin-bottom: 10px;

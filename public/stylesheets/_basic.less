@@ -53,15 +53,6 @@ a, a:visited { text-decoration: none; }
 a:hover, a:active { text-decoration: none; }
 ul { list-style-type: none; }
 
-
-@font-face {
-  font-family: 'Cuprum';
-  font-style: normal;
-  font-weight: normal;
-  src: local('Cuprum'), url('http://themes.googleusercontent.com/font?kit=JgXs0F_UiaEdAS74msmFNg') format('truetype');
-}
-
-
 .rounded (@radius: 10px) {
   -moz-border-radius: @radius;
   -webkit-border-radius: @radius;
@@ -85,6 +76,14 @@ ul { list-style-type: none; }
   border-bottom-left-radius: @radius;
   border-bottom-right-radius: @radius;
   behavior: url(/stylesheets/PIE.htc);
+}
+.gradient (@from: #ffffff, @to: #000000) {
+	background: @from;
+	background: -webkit-gradient(linear, 0 0, 0 bottom, from(@from), to(@to));
+	background: -moz-linear-gradient(@from, @to);
+	background: linear-gradient(@from, @to);
+	-pie-background: linear-gradient(@from, @to);
+	behavior: url(/stylesheets/PIE.htc);
 }
 .button {
 background: #222 url(http://www.zurb.com/images/alert-overlay.png) repeat-x;

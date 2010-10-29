@@ -2,6 +2,7 @@
 <html>
 <head>
   <title>CheatsheetCmsRails</title>
+  <link href='http://fonts.googleapis.com/css?family=Cuprum&subset=latin' rel='stylesheet' type='text/css'>
   <link rel="stylesheet/less" href="/stylesheets/cheatsheet.less" type="text/css">
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :defaults %>
@@ -26,27 +27,28 @@
         <% if user_signed_in? %>
           <p>Welcome <span><%= current_user.email %></span></p>
           <ul>
-            <li><%= link_to "Log out", destroy_user_session_path %></li>
             <li><%= link_to "Manage Cheatsheets", sheets_path %></li>
+            <li><%= link_to "Log out", destroy_user_session_path %></li>
           </ul>
-          <% else %>
+        <% else %>
           <%= form_tag(new_user_session_path) %>
           <dl>
             <dt><%= label_tag 'user[email]', 'E-Mail' %></dt>
             <dd><%= text_field_tag 'user[email]' %></dd>
             <dt><%= label_tag 'user[password]', 'Password' %></dt>
             <dd><%= text_field_tag 'user[password]' %></dd>
-            <dd><%= check_box_tag 'user[remember_me]', 1, false, :class => 'check' %><label for="user_remember_me">Remember me</label>
-				<%= submit_tag "Login »", :class => 'submit' %>
-			</dd>
+            <dd>
+                <%= check_box_tag 'user[remember_me]', 1, false, :class => 'check' %><label for="user_remember_me">Remember me</label>
+				        <%= submit_tag "Login »", :class => 'submit' %>
+			      </dd>
           </dl>
-          <% end %>
-		  <ul>
-          <li><%= link_to "Create Account", new_user_registration_path %></li>
-		  <li><%= link_to "Password forgotten?", new_user_password_path %></li>
-		</ul>
-        </div>
-        <div class="clear">&nbsp;</div>
+          <ul>
+            <li><%= link_to "Create Account", new_user_registration_path %></li>
+      		  <li><%= link_to "Password forgotten?", new_user_password_path %></li>
+      		</ul>
+        <% end %>
+      </div>
+      <div class="clear">&nbsp;</div>
     </div>
   </div>
 </body>

@@ -1,26 +1,15 @@
-<h1>Listing sheets</h1>
-
-<table>
-  <tr>
-    <th>Name</th>
-    <th>Description</th>
-    <th>User</th>
-    <th></th>
-    <th></th>
-    <th></th>
-  </tr>
-
+<h2>Manage your Cheatsheets</h2>
+<hr />
 <% @sheets.each do |sheet| %>
-  <tr>
-    <td><%= link_to sheet.name, sheet %></td>
-    <td><%= sheet.description %></td>
-    <td><%= sheet.user.email %></td>
-    <td><%= link_to 'Edit', edit_sheet_path(sheet) %></td>
-    <td><%= link_to 'Destroy', sheet, :confirm => 'Are you sure?', :method => :delete %></td>
-  </tr>
+<div class="sheetIndex">
+  <h3><%= link_to sheet.name, sheet %></h3>
+  <p><%= sheet.description %></p>
+  <ul>
+    <li><%= link_to 'Edit', edit_sheet_path(sheet) %></li>
+    <li><%= link_to 'Delete', sheet, :confirm => 'Are you sure?', :method => :delete %></li>
+  </ul>
+  <div class="clear">&nbsp;</div>
+</div>
 <% end %>
-</table>
-
-<br />
-
-<%= link_to 'New Sheet', new_sheet_path %>
+<hr />
+<%= link_to 'Create Sheet', new_sheet_path, :class => 'button' %>
