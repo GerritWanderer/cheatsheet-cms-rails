@@ -1,10 +1,10 @@
-<%= form_for([@sheet, @block]) do |f| %>
-  <% if @block.errors.any? %>
+<%= form_for([@sheet, @category]) do |f| %>
+  <% if @category.errors.any? %>
     <div id="error_explanation">
-      <h2><%= pluralize(@block.errors.count, "error") %> prohibited this block from being saved:</h2>
+      <h2><%= pluralize(@category.errors.count, "error") %> prohibited this category from being saved:</h2>
 
       <ul>
-      <% @block.errors.full_messages.each do |msg| %>
+      <% @category.errors.full_messages.each do |msg| %>
         <li><%= msg %></li>
       <% end %>
       </ul>
@@ -17,7 +17,7 @@
   </div>
   <div class="field">
     <%= f.label :column %><br />
-    <%= select("block", "column", {"Left" => "left", "Right" => "right"}) %>
+    <%= select("category", "column", {"Left" => "left", "Right" => "right"}) %>
   </div>
   <div class="field">
     <%= f.label :position %><br />
@@ -26,9 +26,9 @@
   <div class="field">
   <%= f.label :sheet_id %><br />
   <% if params[:sheet_id] %>
-    <%= select("block", "sheet_id", {@sheet.name => @sheet.id}) %>
+    <%= select("category", "sheet_id", {@sheet.name => @sheet.id}) %>
   <% else %>
-    <%= select("block", "sheet_id", Sheet.all.collect {|p| [ p.name, p.id ] }) %>
+    <%= select("category", "sheet_id", Sheet.all.collect {|p| [ p.name, p.id ] }) %>
   <% end %>
   </div> 
   <div class="actions">

@@ -24,8 +24,8 @@
     <%= f.text_field :position %>
   </div>
   <div class="field">
-    <%= f.label :block_id %><br />
-    <%= select("cheat", "block_id", @blocks.collect {|p| [ p.name, p.id ] }) %>
+    <%= f.label :category_id %><br />
+    <%= select("cheat", "category_id", @categories.collect {|p| [ p.name, p.id ] }) %>
   </div>
   <div class="actions">
     <%= f.submit %>

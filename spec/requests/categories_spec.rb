@@ -1,9 +1,9 @@
 require 'spec_helper'
 
-describe "Blocks" do
-  describe "GET /blocks" do
+describe "Categories" do
+  describe "GET /categories" do
     it "works! (now write some real specs)" do
-      get blocks_path
+      get categories_path
     end
   end
 end

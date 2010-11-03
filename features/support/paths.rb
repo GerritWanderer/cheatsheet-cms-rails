@@ -24,14 +24,14 @@ module NavigationHelpers
       sheets_path
     when /the cheatsheet page/
       sheet_path
-    when /the create sheetblock page/
-      new_sheet_block_path
-    when /the edit sheetblock page/
-      edit_sheet_block_path
-    when /the sheetblocks page/
-      sheet_blocks_path
-    when /the sheetblock page/
-      sheet_block_path
+    when /the create sheetcategory page/
+      new_sheet_category_path
+    when /the edit sheetcategory page/
+      edit_sheet_category_path
+    when /the sheetcategories page/
+      sheet_categories_path
+    when /the sheetcategory page/
+      sheet_category_path
 
     else
       begin

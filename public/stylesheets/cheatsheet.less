@@ -12,7 +12,6 @@ body {
 div#head {
 	background-color: @redDark;
 	border-bottom: 5px solid @redLight;
-	margin-bottom: 20px;
 	div#title {
 		.contentContainer;
 		div.inside {
@@ -34,6 +33,7 @@ div#content {
   .contentContainer;
   .rounded;
   padding: 20px 0px;
+	margin-top: 20px;
   background-color: @greyLight;
   div#colLeft {
 		.grid(66,2,2);
@@ -127,33 +127,50 @@ div#content {
   }
 }
 
-
 div#cheatsheet {
-  margin-top: 40px;
   .cheatsheetContainer;
-  div#cheatsheetTabs {
-    .grid(56,32,23);
-    ul {
-			.rounded;
-			border: 1px solid black;
-			height: 16px;
-			li {
-      float: left;
-      list-style-type: none;
-      margin-left: 20px;
-    	}
+	a.back {
+		.grid(15,30,2);
+		.gradient(@redLight, black);
+		.roundedBottom;
+		text-align: center;
+		background-color: black;
+		color: white;
+		height: 30px;
+	}
+  ul {
+		.grid(39);
+		.gradient(@redLight, @redDark);
+		.roundedBottom;
+		height: 30px;
+		background-color: @redLight;
+		padding: 0px 20px;
+		li {
+    	float: right;
+			margin-left: 20px;
+			line-height: 30px;
+			color: white;
+			a { color: white; text-decoration: underline; }
+  	}
+		li:first-child {
+			margin-left: 0px;
+			float: left;
 		}
-  }
+	}
   div#columnLeft, div#columnRight {
     .grid(28);
   }
   div#content {
-    .grid(60, 2, 2);
-		border: none;
+    .grid(56, 2, 2, 2, 2);
   }
 }
-div.block {
+div.category {
   .rounded;
+	.gradient(@redLight, @redDark);
+	dl dt, dl dd, dl a {
+		color: white;
+	}
   border: 1px solid black;
 	margin-bottom: 20px;
+	padding: 15px;
 }

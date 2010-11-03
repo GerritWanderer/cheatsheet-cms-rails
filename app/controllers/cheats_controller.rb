@@ -13,13 +13,13 @@ class CheatsController < ApplicationController
   
   def new
     @cheat = Cheat.new
-    @blocks = Block.find_all_by_sheet_id(params[:sheet_id])
+    @categories = Category.find_all_by_sheet_id(params[:sheet_id])
     self.set_respond
   end
   
   def edit
     @cheat = Cheat.find(params[:id])
-    @blocks = Block.find_all_by_sheet_id(params[:sheet_id])
+    @categories = Category.find_all_by_sheet_id(params[:sheet_id])
     self.set_respond
   end
 

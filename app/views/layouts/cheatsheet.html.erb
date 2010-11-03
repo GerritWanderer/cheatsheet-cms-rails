@@ -8,29 +8,32 @@
   <%= csrf_meta_tag %>
 </head>
 <body>
-  <div id="cheatsheet">
-    <% flash.each do |key, value| %><div class="flash <%= key %>"><%= key %>: <%= value %></div><% end %>
-    <div id="cheatsheetTabs">
-      <ul>
-        <% @sheets.each do |sheet| %>
-          <li><%= link_to sheet.name, sheet_path(sheet) %></li>
-        <% end %>
-      </ul>
-      <ul>
-        <li><%= link_to 'Edit Sheet', edit_sheet_path(@sheet) %></li>
-        <li><%= link_to 'Delete Sheet', sheet_path(@sheet), :method => 'delete' %></li>
-        <li><%= link_to 'New Block', new_sheet_block_path(@sheet) %></li>
-        <li><%= link_to 'New Cheat', new_sheet_cheat_path(@sheet) %></li>
-      </ul>
+  <div id="head">
+    <div id="title">
+      <div class="inside">
+        <h1>Welcome to Cheatsheet-CMS-Rails</h1>
+        <h2>Developers place for creating and sharing Cheatsheets</h2>
+      </div>
     </div>
+  </div>
+  <div id="cheatsheet">
+    <%= link_to 'Back to overview', sheets_path(), :class => 'back' %>
+    <ul>
+      <li><%= @sheet.name %></li>
+      <li><%= link_to 'Edit Sheet', edit_sheet_path(@sheet) %></li>
+      <li><%= link_to 'Add Category', new_sheet_category_path(@sheet) %></li>
+      <li><%= link_to 'Add Cheat', new_sheet_cheat_path(@sheet) %></li>
+    </ul>
+    <div class="clear">&nbsp;</div>
+    <% flash.each do |key, value| %><div class="flash <%= key %>"><%= key %>: <%= value %></div><% end %>
     <div id="columnLeft">
-      <%= render :partial => "sheets/block", :object => @sheet, :as => :sheet, :locals => { :column => "left" } %>
+      &nbsp;<%= render :partial => "sheets/category", :object => @sheet, :as => :sheet, :locals => { :column => "left" } %>
     </div>
     <div id="content">
       <%= yield %>
     </div>
     <div id="columnRight">
-      <%= render :partial => "sheets/block", :object => @sheet, :as => :sheet, :locals => { :column => "right" } %> 
+      &nbsp;<%= render :partial => "sheets/category", :object => @sheet, :as => :sheet, :locals => { :column => "right" } %> 
     </div>
     <div class="clear">&nbsp;</div>
   </div>

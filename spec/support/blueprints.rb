@@ -14,16 +14,16 @@ Sheet.blueprint do
   description { "Lorem ipsum..." }
 end
 
-Block.blueprint do
+Category.blueprint do
   sheet
   id { "#{sn}" }
-  name { "Sample Block" }
+  name { "Sample Category" }
   column { "left" }
   position { "1" }
 end
 
 Cheat.blueprint do
-  block
+  category
   id { "#{sn}" }
   name { "Sample Cheat" }
   preview { "Lorem ipsum..." }

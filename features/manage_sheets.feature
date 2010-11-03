@@ -8,7 +8,7 @@ Feature: Manage my Cheatsheets
     Given I am an authenticated user
     And I am on the home page
     When I follow "Manage Cheatsheets"
-    And I follow "New Sheet"
+    And I follow "Create Sheet"
     And I fill in "sheet_name" with "Cheatsheet Sample"
     And I press "Create Sheet"
     Then I am on the cheatsheets page
@@ -18,7 +18,7 @@ Feature: Manage my Cheatsheets
     Given I am an authenticated user
     And I am on the home page
     When I follow "Manage Cheatsheets"
-    And I follow "New Sheet"
+    And I follow "Create Sheet"
     And I fill in "sheet_name" with "xy"
     And I press "Create Sheet"
     Then I am on the create cheatsheet page
@@ -55,6 +55,6 @@ Feature: Manage my Cheatsheets
     Given I am an authenticated user
     And I created a Sheet with name "Cheatsheet Sample"
     And I am on the cheatsheets page
-    When I follow "Destroy"
+    When I follow "Delete"
     Then I am on the cheatsheets page
     And I should not see "Cheatsheet Sample"

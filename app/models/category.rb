@@ -1,4 +1,4 @@
-class Block < ActiveRecord::Base
+class Category < ActiveRecord::Base
   belongs_to :sheet
   has_many :cheats
   

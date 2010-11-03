@@ -1,45 +1,45 @@
-class BlocksController < ApplicationController
+class CategoriesController < ApplicationController
   respond_to :html
   
   def index
-    @blocks = Block.all
+    @categories = Category.all
     self.set_respond
   end
 
   def show
-    @block = Block.find(params[:id])
+    @category = Category.find(params[:id])
     self.set_respond
   end
   
   def new
-    @block = Block.new
+    @category = Category.new
     self.set_respond
   end
 
   def edit
-    @block = Block.find(params[:id])
+    @category = Category.find(params[:id])
     self.set_respond
   end
 
   def create
-    @block = Block.new(params[:block])
-    @block.save ? flash[:notice] = "Block was successfully created" : flash[:warning] = "Block was NOT created"
+    @category = Category.new(params[:category])
+    @category.save ? flash[:notice] = "Category was successfully created" : flash[:warning] = "Category was NOT created"
     self.set_respond
   end
 
   def update
-    @block = Block.find(params[:id])
-    @block.update_attributes(params[:block]) ? flash[:notice] = "Block was successfully updated" : flash[:warning] = "Block was NOT updated"
+    @category = Category.find(params[:id])
+    @category.update_attributes(params[:category]) ? flash[:notice] = "Category was successfully updated" : flash[:warning] = "Category was NOT updated"
     self.set_respond
   end
 
   def destroy
-    @block = Block.find(params[:id])
-    @block.destroy
+    @category = Category.find(params[:id])
+    @category.destroy
     if request.path_info.split(/\//)[1] != self.controller_name
       redirect_to Sheet.find(params[:sheet_id])
     else
-      redirect_to blocks_path
+      redirect_to categories_path
     end
   end
   
@@ -48,17 +48,17 @@ class BlocksController < ApplicationController
     if request.path_info.split(/\//)[1] != self.controller_name
       @sheet = Sheet.find(params[:sheet_id]) if params[:sheet_id]
       @sheets = Sheet.find_all_by_user_id(current_user.id)
-      if params[:block]
+      if params[:category]
         #If Update/Create Action
         redirect_to sheet_path(@sheet)
       else
         #Basic Response for index/show/edit
-        respond_with(@block) do |format|
+        respond_with(@category) do |format|
           format.html { render :layout => "cheatsheet" }
         end
       end
     else
-      respond_with @block
+      respond_with @category
     end
   end
 end

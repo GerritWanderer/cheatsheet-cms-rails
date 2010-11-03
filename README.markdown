@@ -1,28 +1,27 @@
-** Cheatsheet CMS for Ruby On Rails.**
+## Cheatsheet CMS for Ruby on Rails 3
 
-_Overall goals:_
+### Overall Goals
+  - Creating a Multi-User Interface for managing and sharing your own cheatsheets
+  - Full BDD with Cucumber and rSpec
+  - More Interface-Design with lessCSS, 960.gs and CSS3PIE
+  - Integrate some fancy jQuery-PlugIns
 
-* Creating a Multi-User Interface for managing and sharing your own cheatsheets
-* Implement the most fancyiest jQuery-PlugIns
-* More Interface-Design with lessCSS and 960.gs
-* Full BDD with Cucumber and rSpec
+- - -
 
-------------------
+### Installation
+`bundle install && rake db:migrate`
 
-_Whatch out:_
-For the following config settings i selected Env-Variables. Be sure to set the env-variables or use the direct input.
+**Integrated Gems:**
 
-  SMTP-Settings... (./config/initializers/setup_mail.rb)
-  
-  ENV['SMTP_SERVER'] = 'mail.example.org'
-  
-  ENV['SMTP_DOMAIN'] = 'example.org'
-  
-  ENV['SMTP_USER'] = 'exampleuser'
-  
-  ENV['SMTP_PASSWORD'] = 'examplepassword'
+  - `devise`
+  - `rspec-rails`
+  - `cucumber-rails`
+  - `machinist`
+  - `email_spec`
 
+**You need to change your SMTP-Server Settings for sending mails with Devise.**
 
-Mailer default URL...  (./config/application.rb)
+Take a look into `./config/initzializers/setup_mail.rb` and choose your way of setting up env-variables or paste it as direct input:
 
-  ENV['DEFAULT_URL_OPTIONS'] = 'localhost:3000'
+### Demo
+You can find a Demo at [Heroku](http://cheatsheets.heroku.com "Cheatsheet CMS at Heroku")

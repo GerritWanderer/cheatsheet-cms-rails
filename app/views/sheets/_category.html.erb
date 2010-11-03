@@ -1,0 +1,18 @@
+<% sheet.categories.find_all{|item| item.column == column}.each do |category| %>
+  <div class="category">
+    <dl>
+      <dt>
+        <%= category.name %>
+        [<%= link_to "Edit", edit_sheet_category_path(sheet, category) %> /
+        <%= link_to 'Destroy', sheet_category_path(sheet, category), :confirm => 'Sure?', :method => :delete %>]
+      </dt>
+      <% category.cheats.each do |cheat| %>
+        <dd>
+          <%= link_to cheat.name, sheet_cheat_path(sheet, cheat) %>
+          [<%= link_to "Edit", edit_sheet_cheat_path(sheet, cheat) %> /
+          <%= link_to 'Destroy', sheet_cheat_path(sheet, cheat), :confirm => 'Sure?', :method => :delete %>]
+        </dd>
+      <% end %>
+    </dl>
+  </div>
+<% end %>
