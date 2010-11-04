@@ -1,0 +1,26 @@
+<% position ||= 1 %>
+<% template ||= "fulltext" %>
+<% @number ||= 1 %>
+
+<% if params[:action] == "add" || params[:action] == "new" %>
+	<% @number.times do |i| %>
+<div class="template" position="<%= position %>">
+	<ul>
+		<li><select class="template">
+			<% Dir.glob("app/views/blocks/templates/*") do |template| %>
+				<option><%= template[28..-10] %></option>
+			<% end %>
+		</select></li>
+		<li><select><option>1</option><option>2</option><option>3</option></select> <a class="add">Create</a></li>
+		<li><a class="up">Up</a></li>
+		<li><a class="down">Down</a></li>
+		<li><a class="delete">Delete</a></li>
+	</ul>
+	<div class="content"><%= render :partial => "blocks/templates/"+template, :locals => { :view => "form", :position => position } %></div>
+</div>
+	<% end %>
+<% elsif params[:action] == "show" %>
+	<%= render :partial => "blocks/templates/"+template, :locals => { :view => "show" } %>
+<% elsif params[:action] == "switch" %>
+	<%= render :partial => "blocks/templates/"+template, :locals => { :view => "form" } %>
+<% end %>

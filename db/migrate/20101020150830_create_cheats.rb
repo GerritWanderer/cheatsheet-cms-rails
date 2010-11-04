@@ -4,7 +4,7 @@ class CreateCheats < ActiveRecord::Migration
       t.string :name
       t.string :preview
       t.integer :position
-      t.references :block
+      t.references :category
 
       t.timestamps
     end

@@ -6,6 +6,16 @@
   <%= stylesheet_link_tag :all %>
   <%= javascript_include_tag :all %>
   <%= csrf_meta_tag %>
+	<script type="text/javascript">
+	jQuery(document).ajaxSend(function(event, request, settings) {
+	  request.setRequestHeader("Accept", "text/javascript");
+	 	request.setRequestHeader("X-Requested-With", "XMLHttpRequest");
+	  request.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+	  if (settings.type.toUpperCase() == 'GET' || typeof(AUTH_TOKEN) == "undefined") return;
+	  settings.data = settings.data || "";
+	  if (typeof(AUTH_TOKEN) != "undefined") settings.data += (settings.data ? "&" : "") + "authenticity_token=" + encodeURIComponent(AUTH_TOKEN);
+	});
+	</script>
 </head>
 <body>
   <div id="head">
@@ -18,7 +28,7 @@
   </div>
   <div id="cheatsheet">
     <%= link_to 'Back to overview', sheets_path(), :class => 'back' %>
-    <ul>
+    <ul class="actions">
       <li><%= @sheet.name %></li>
       <li><%= link_to 'Edit Sheet', edit_sheet_path(@sheet) %></li>
       <li><%= link_to 'Add Category', new_sheet_category_path(@sheet) %></li>

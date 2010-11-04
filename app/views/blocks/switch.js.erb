@@ -1,0 +1,1 @@
+$('div.template[position="<%= params[:position] %>"] div.content').html("<%= escape_javascript(render 'blocks/templates/'+params[:template]) %>");

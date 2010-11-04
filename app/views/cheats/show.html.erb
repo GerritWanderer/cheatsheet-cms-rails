@@ -1,4 +1,12 @@
 <div>
 	<h2><%= @cheat.name %></h2>
 	<h3><%= @cheat.preview %></h3>
+	<hr />
+	
+	<% @cheat.blocks.each do |block| %>
+		<%= render 	:partial => "blocks/templates/"+block.template,
+								:object => block, :as => :block,
+								:locals => { :view => "show" }
+		%>
+	<% end %>
 </div>

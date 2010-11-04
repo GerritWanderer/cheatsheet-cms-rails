@@ -1,6 +1,6 @@
-class CreateBlocks < ActiveRecord::Migration
+class CreateCategories < ActiveRecord::Migration
   def self.up
-    create_table :blocks do |t|
+    create_table :categories do |t|
       t.string :name
       t.string :column
       t.integer :position
@@ -11,6 +11,6 @@ class CreateBlocks < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :blocks
+    drop_table :categories
   end
 end

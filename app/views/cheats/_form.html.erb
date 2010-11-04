@@ -1,4 +1,72 @@
-<%= form_for([@sheet, @cheat]) do |f| %>
+<script type="text/javascript">
+var selectedDiv;
+$(document).ready(function() {
+ 	$("select.template").live('change', function() {
+		$.ajax({
+		  url: '/blocks/'+$(this).val()+'/position/'+$(this).parents("div.template").attr("position"),
+			type: "POST",
+		  success: function(data) { data; }
+		});
+	});
+	
+ 	$("a.add").live('click', function () {
+		selectedDiv = $(this).parents('div.template');
+		$.ajax({
+		  url: '/blocks/add',
+			type: "POST",
+			data: ({number : $(this).prev().val(), position : $(this).parents("div.template").attr("position") }),
+		  success: function(data) { data; }
+		});
+	});
+	
+	$('div.template a.up, div.template a.down').live('click', function () {
+		selectedDiv = $(this).parents("div.template");
+		targetDiv = false;
+		if ($(this).attr("class") == "up" && selectedDiv.attr("position") > 1) {
+			targetDiv = $(this).parents("div.template").prev();
+		} else if ($(this).attr("class") == "down" && selectedDiv.attr("position") < $("div#blocks").children().size()) {
+			targetDiv = $(this).parents("div.template").next();
+		} else { alert("your selected div is already on top/bottom") }
+		
+		if (targetDiv) {
+			selectedTemplate = selectedDiv.children().detach();
+			targetTemplate = targetDiv.children().detach();
+			targetDiv.html(selectedTemplate);
+			selectedDiv.html(targetTemplate);
+		
+			$("input[name^=block["+selectedDiv.attr("position")+"]]").each(function(index) {
+				$(this).attr("name", $(this).attr("name").replace("["+selectedDiv.attr("position")+"]", "[]"));
+			});
+			$("input[name^=block["+targetDiv.attr("position")+"]]").each(function(index) {
+				$(this).attr("name", $(this).attr("name").replace("["+targetDiv.attr("position")+"]", "["+selectedDiv.attr("position")+"]"));
+			});
+			$("input[name^=block[]]").each(function(index) {
+				$(this).attr("name", $(this).attr("name").replace("[]", "["+targetDiv.attr("position")+"]"));
+			});
+		}
+	});
+	
+	$('div.template a.delete').live('click', function () {
+		selectedDiv = $(this).parents("div.template");
+		if (selectedDiv.attr("position") < $("div#blocks").children().size()) {
+			nextDivs = selectedDiv.nextAll();
+			selectedDiv.remove();
+			$.each(nextDivs, function() {
+				i = $(this).attr("position");
+				$(this).attr("position", --i);
+				i++;
+				$("input[name^=block["+i+"]]").each(function(index) {
+					alert($(this).attr("name"));
+				  x = $(this).parents('div.template').attr("position");
+				  $(this).attr("name", $(this).attr("name").replace("["+i+"]", "["+x+"]"));
+				});
+			});
+		}
+	});
+});
+</script>
+
+<%= form_for([@sheet, @cheat], :remote => true) do |f| %>
   <% if @cheat.errors.any? %>
     <div id="error_explanation">
       <h2><%= pluralize(@cheat.errors.count, "error") %> prohibited this cheat from being saved:</h2>
@@ -27,6 +95,10 @@
     <%= f.label :category_id %><br />
     <%= select("cheat", "category_id", @categories.collect {|p| [ p.name, p.id ] }) %>
   </div>
+	
+	<div id="blocks">
+		<%= render :partial => "blocks/template", :locals => { :template => "fulltext", :number => 1 } %>
+	</div>
   <div class="actions">
     <%= f.submit %>
   </div>

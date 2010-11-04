@@ -1,0 +1,9 @@
+$("<%= escape_javascript(render 'blocks/template') %>").insertAfter($("div.template[position='<%= params[:position] %>']"));
+i = <%= params[:position] %>;
+$.each($("div.template[position='<%= params[:position] %>']").nextAll(), function() {
+  $(this).attr("position", ++i);
+});
+$("input[name^=block[]]").each(function(index) {
+  x = $(this).parents('div.template').attr("position");
+  $(this).attr("name", $(this).attr("name").replace("[]", "["+x+"]"));
+});
